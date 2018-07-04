@@ -19,6 +19,12 @@ var User = mongoose.model('User', {
     unique: true,
     validate: {
       validator: validator.isEmail,
+      //It is the same as 
+      // validate: {
+      // 	validator: (value) => {
+      // 		return validator.isEmail(value);
+      // 	},
+      // },
       message: '{VALUE} is not a valid email'
     }
   },

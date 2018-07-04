@@ -10,6 +10,7 @@ var authenticate = (req, res, next) => {
 
     req.user = user;
     req.token = token;
+    //only when next called, the function will keep continue to run.
     next();
   }).catch((e) => {
     res.status(401).send();

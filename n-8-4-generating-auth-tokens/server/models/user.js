@@ -32,6 +32,9 @@ var UserSchema = new mongoose.Schema({
   }]
 });
 
+
+//Overwrite default mongo method.
+//So the return body for the client will only see userID and email
 UserSchema.methods.toJSON = function () {
   var user = this;
   var userObject = user.toObject();
@@ -39,6 +42,8 @@ UserSchema.methods.toJSON = function () {
   return _.pick(userObject, ['_id', 'email']);
 };
 
+//Define instance method
+// Use normal function becasue we need to use this
 UserSchema.methods.generateAuthToken = function () {
   var user = this;
   var access = 'auth';
@@ -46,7 +51,9 @@ UserSchema.methods.generateAuthToken = function () {
 
   user.tokens.push({access, token});
 
+  //Here use return because the server.js will chain it by using then in Promise
   return user.save().then(() => {
+    //This value will be passed into the successful value inside the Promise
     return token;
   });
 };

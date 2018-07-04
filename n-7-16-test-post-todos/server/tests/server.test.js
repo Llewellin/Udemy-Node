@@ -4,7 +4,10 @@ const request = require('supertest');
 const {app} = require('./../server');
 const {Todo} = require('./../models/todo');
 
+//beforeEach: run codes before every test codes 
+//Only when done called process keep continue
 beforeEach((done) => {
+  //Remove all the data inside collection
   Todo.remove({}).then(() => done());
 });
 
@@ -12,6 +15,7 @@ describe('POST /todos', () => {
   it('should create a new todo', (done) => {
     var text = 'Test todo text';
 
+    //Send post request and make sure response is correct
     request(app)
       .post('/todos')
       .send({text})
@@ -24,6 +28,7 @@ describe('POST /todos', () => {
           return done(err);
         }
 
+        //Make sure Database is correct
         Todo.find().then((todos) => {
           expect(todos.length).toBe(1);
           expect(todos[0].text).toBe(text);

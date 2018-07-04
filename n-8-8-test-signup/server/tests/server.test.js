@@ -171,6 +171,7 @@ describe('PATCH /todos/:id', () => {
   });
 });
 
+//todo
 describe('GET /users/me', () => {
   it('should return user if authenticated', (done) => {
     request(app)

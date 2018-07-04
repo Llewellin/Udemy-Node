@@ -38,9 +38,11 @@ const populateTodos = (done) => {
 
 const populateUsers = (done) => {
   User.remove({}).then(() => {
+    //cannot use insertMany becasue it won't run middleware
     var userOne = new User(users[0]).save();
     var userTwo = new User(users[1]).save();
 
+    //Cool !
     return Promise.all([userOne, userTwo])
   }).then(() => done());
 };

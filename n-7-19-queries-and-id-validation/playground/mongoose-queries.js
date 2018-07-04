@@ -6,11 +6,13 @@ const {User} = require('./../server/models/user');
 
 // var id = '57bf38394b39c93d2a557e9811';
 //
+// Make sure ID is correct
 // if (!ObjectID.isValid(id)) {
 //   console.log('ID not valid');
 // }
 
 // Todo.find({
+//// In Mongoose no need to use ObjectID. It will convert automatically	
 //   _id: id
 // }).then((todos) => {
 //   console.log('Todos', todos);
@@ -30,6 +32,7 @@ const {User} = require('./../server/models/user');
 // }).catch((e) => console.log(e));
 
 User.findById('57bdb0fcdedf88540bfa2d66').then((user) => {
+  //If no result
   if (!user) {
     return console.log('Unable to find user');
   }

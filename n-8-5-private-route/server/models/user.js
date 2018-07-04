@@ -51,18 +51,21 @@ UserSchema.methods.generateAuthToken = function () {
   });
 };
 
+//statics - Modeal method
 UserSchema.statics.findByToken = function (token) {
   var User = this;
   var decoded;
 
   try {
+    //if verify fail, use catch to get the error. want program to keep running
     decoded = jwt.verify(token, 'abc123');
   } catch (e) {
     return Promise.reject();
   }
 
   return User.findOne({
-    '_id': decoded._id,
+    _id: decoded._id,
+    //nesting one require quates: ''
     'tokens.token': token,
     'tokens.access': 'auth'
   });

@@ -111,6 +111,9 @@ app.post('/users', (req, res) => {
   })
 });
 
+
+//Authenticate is a middleware function
+//will run middleware before the route
 app.get('/users/me', authenticate, (req, res) => {
   res.send(req.user);
 });

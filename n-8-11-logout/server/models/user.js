@@ -55,7 +55,10 @@ UserSchema.methods.generateAuthToken = function () {
 UserSchema.methods.removeToken = function (token) {
   var user = this;
 
+  //return for Promise
   return user.update({
+    //$ sign from MongoDB. $pull remove item that match the criteria.
+    //remove token from the database
     $pull: {
       tokens: {token}
     }

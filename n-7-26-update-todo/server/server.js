@@ -68,8 +68,10 @@ app.delete('/todos/:id', (req, res) => {
   });
 });
 
+//patch - for update
 app.patch('/todos/:id', (req, res) => {
   var id = req.params.id;
+  //Pick the properties that are going to be updated
   var body = _.pick(req.body, ['text', 'completed']);
 
   if (!ObjectID.isValid(id)) {

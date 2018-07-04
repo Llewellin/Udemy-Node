@@ -6,8 +6,10 @@ mongoose.connect('mongodb://localhost:27017/TodoApp');
 var Todo = mongoose.model('Todo', {
   text: {
     type: String,
+    //Validators
     required: true,
     minlength: 1,
+    //trim the beginning and ending space
     trim: true
   },
   completed: {

@@ -15,6 +15,7 @@ var Todo = mongoose.model('Todo', {
     type: Number,
     default: null
   },
+  //Cool
   _creator: {
     type: mongoose.Schema.Types.ObjectId,
     required: true

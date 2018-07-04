@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs')
 
 var password = '123abc!';
 
+// THe bigger the number, the safer/slower the function run
 // bcrypt.genSalt(10, (err, salt) => {
 //   bcrypt.hash(password, salt, (err, hash) => {
 //     console.log(hash);
@@ -12,6 +13,8 @@ var password = '123abc!';
 
 var hashedPassword = '$2a$10$huAU4qTnQuGPifHEXfV9cOmPJ7p61oKaoXrY1WviiDAznE/rW8oLK';
 
+// TO see if they are the same or not
+// plain text:from user. Hash Password: from database
 bcrypt.compare('123!', hashedPassword, (err, res) => {
   console.log(res);
 });

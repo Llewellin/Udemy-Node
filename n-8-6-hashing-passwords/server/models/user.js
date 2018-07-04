@@ -69,6 +69,8 @@ UserSchema.statics.findByToken = function (token) {
   });
 };
 
+//Create MongoGoose middleware
+//Befroe event:save: run this middleware first
 UserSchema.pre('save', function (next) {
   var user = this;
 

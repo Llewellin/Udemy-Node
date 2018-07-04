@@ -102,8 +102,10 @@ app.post('/users', (req, res) => {
   var user = new User(body);
 
   user.save().then(() => {
+  	//return in order to chain it
     return user.generateAuthToken();
   }).then((token) => {
+  	// header with prefix x- is a custom one, doesn't require by default
     res.header('x-auth', token).send(user);
   }).catch((e) => {
     res.status(400).send(e);

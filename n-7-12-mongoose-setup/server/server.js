@@ -1,8 +1,10 @@
 var mongoose = require('mongoose');
 
+//setup mongoose to use Promise
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost:27017/TodoApp');
 
+//Only afer mongoose.connect successed, will continue to process anything related to MongoDB
 var Todo = mongoose.model('Todo', {
   text: {
     type: String

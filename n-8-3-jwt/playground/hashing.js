@@ -5,9 +5,11 @@ var data = {
   id: 10
 };
 
+//create hash and return token
 var token = jwt.sign(data, '123abc');
 console.log(token);
 
+//make sure data was not manipulated
 var decoded = jwt.verify(token, '123abc');
 console.log('decoded', decoded);
 
@@ -22,10 +24,12 @@ console.log('decoded', decoded);
 // };
 // var token = {
 //   data,
+//   somesecret is a algorithm only on server. To make sure it generate unique hash
 //   hash: SHA256(JSON.stringify(data) + 'somesecret').toString()
 // }
 //
-//
+//// Hacker doesn't know secret algorithm. They can change data but they don't know
+//// secret algorithm
 // // token.data.id = 5;
 // // token.hash = SHA256(JSON.stringify(token.data)).toString();
 //
